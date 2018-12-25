@@ -5,14 +5,20 @@ if (rootProject.ext.isModuleLogin) {
 }
 
 android {
-    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
         if (rootProject.ext.isModuleLogin) {
             applicationId "com.demo.sdk.module_login"
         }
-        minSdkVersion 15
-        targetSdkVersion 27
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
 

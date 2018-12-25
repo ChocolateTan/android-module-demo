@@ -10,91 +10,86 @@ ext {
     isModuleMember = false
     isModuleSale = false
 
-    //版本号
-    versions = [
+    android = [
+
             applicationId           : "com.demo.sdk",        //应用ID
             versionCode             : 1,                    //版本号
             versionName             : "1.0.0",              //版本名称
 
             compileSdkVersion       : 27,
             buildToolsVersion       : "27.0.3",
-            minSdkVersion           : 17,
+            minSdkVersion           : 15,
             targetSdkVersion        : 23,
-
-            androidSupportSdkVersion: "27.1.1",
-            constraintLayoutVersion : "1.1.1",
-            runnerVersion           : "1.0.1",
-            espressoVersion         : "3.0.1",
-            junitVersion            : "4.12",
-            annotationsVersion      : "24.0.0",
-
-            multidexVersion         : "1.0.2",
-            butterknifeVersion      : "8.4.0",
-            arouterApiVersion       : "1.4.0",
-            arouterCompilerVersion  : "1.2.1",
-            arouterannotationVersion: "1.0.4",
-            eventbusVersion         : "3.0.0",
-            novateVersion           : "1.5.5",
-            loggerVersion           : "2.2.0",
-            fastjsonVersion         : "1.1.54",
-            barlibraryVersion       : "2.3.0",
-            picassoVersion          : "2.71828",
-            bannerVersion           : "1.4.10",
-            javaxVersion            : "1.2",
-            lombokVersion           : "1.16.6",
-            greendaoVersion         : "3.2.2",
-
     ]
-    dependencies = ["appcompat_v7"        : "com.android.support:appcompat-v7:${versions["androidSupportSdkVersion"]}",
-                    "constraint_layout"   : "com.android.support.constraint:constraint-layout:${versions["constraintLayoutVersion"]}",
-                    "runner"              : "com.android.support.test:runner:${versions["runnerVersion"]}",
-                    "espresso_core"       : "com.android.support.test.espresso:espresso-core:${versions["espressoVersion"]}",
-                    "junit"               : "junit:junit:${versions["junitVersion"]}",
-                    "support_annotations" : "com.android.support:support-annotations:${versions["annotationsVersion"]}",
-                    "design"              : "com.android.support:design:${versions["androidSupportSdkVersion"]}",
-                    "support-v4"          : "com.android.support:support-v4:${versions["androidSupportSdkVersion"]}",
-                    "cardview-v7"         : "com.android.support:cardview-v7:${versions["androidSupportSdkVersion"]}",
-                    "recyclerview-v7"     : "com.android.support:recyclerview-v7:${versions["androidSupportSdkVersion"]}",
 
-                    //方法数超过65535解决方法64K MultiDex分包方法
-                    "multidex"            : "com.android.support:multidex:${versions["multidexVersion"]}",
+    //版本号
+    libsVersion = [
+            androidSupportSdkVersion= "27.1.1",
+            constraintLayoutVersion = "1.1.1",
+            runnerVersion           = "1.0.1",
+            espressoVersion         = "3.0.1",
+            junitVersion            = "4.12",
+            annotationsVersion      = "24.0.0",
+            retrofitVersion = "2.1.0",
+//            glideVersion = "3.7.0",
+            loggerVersion = "1.15",
+            eventbusVersion = "3.0.0",
+            gsonVersion = "2.8.0",
+            butterknife = "8.8.0",
+            retrofit = "2.3.0",
+            rxjava = "2.1.1",
+            rxjava_android = "2.0.1",
+//            rxlifecycle = "2.1.0",
+//            rxlifecycle_components = "2.1.0",
+//            dagger_compiler = "2.11",
+//            dagger = "2.11",
+//            greenDao = "3.2.2",
+//            arouter_api = "1.2.2",
+//            arouter_compiler = "1.1.3",
+//            transformations = "2.0.2",
+            rxjava_adapter = "2.3.0",
+            gson_converter = "2.3.0",
+            scalars_converter = "2.3.0",
+//            rxpermission = "0.9.4",
+            eventbus = "3.0.0",
+            support_v4 = "25.4.0",
+            okhttp3 = "3.3.1",
+            multidex="1.0.1"
+    ]
+    dependencies = [
+            appcompat_v7               : "com.android.support:appcompat-v7:$rootProject.androidSupportSdkVersion",
+            design                    : "com.android.support:design:$rootProject.androidSupportSdkVersion",
+            cardview                  : "com.android.support:cardview-v7:$rootProject.androidSupportSdkVersion",
+            palette                   : "com.android.support:palette-v7:$rootProject.androidSupportSdkVersion",
+            recycleview               : "com.android.support:recyclerview-v7:$rootProject.androidSupportSdkVersion",
+            support_v4                : "com.android.support:support-v4:$rootProject.support_v4",
+            annotations               : "com.android.support:support-annotations:$rootProject.androidSupportSdkVersion",
+            eventBus                  : "org.greenrobot:eventbus:$rootProject.eventbus",
+//            glide                     : "com.github.bumptech.glide:glide:$rootProject.glideVersion",
+            gson                      : "com.google.code.gson:gson:$rootProject.gsonVersion",
+            logger                    : "com.orhanobut:logger:$rootProject.loggerVersion",
+//            butterknife               : "com.jakewharton:butterknife:$rootProject.butterknife",
+//            butterknife_compiler      : "com.jakewharton:butterknife-compiler:$rootProject.butterknife",
+            retrofit                  : "com.squareup.retrofit2:retrofit:$rootProject.retrofit",
+            okhttp3                   : "com.squareup.okhttp3:okhttp:$rootProject.okhttp3",
 
-                    //路由
-//                    "arouter_api"         : "com.alibaba:arouter-api:${versions["arouterApiVersion"]}",
-//                    "arouter_compiler"    : "com.alibaba:arouter-compiler:${versions["arouterCompilerVersion"]}",
-//                    "arouter_annotation"  : "com.alibaba:arouter-annotation:${versions["arouterannotationVersion"]}",
 
-                    //黄油刀
-//                    "butterknife_compiler": "com.jakewharton:butterknife-compiler:${versions["butterknifeVersion"]}",
-//                    "butterknife"         : "com.jakewharton:butterknife:${versions["butterknifeVersion"]}",
-
-                    //事件订阅
-                    "eventbus"            : "org.greenrobot:eventbus:${versions["eventbusVersion"]}",
-
-                    //网络
-//                    "novate"              : "com.tamic.novate:novate:${versions["novateVersion"]}",
-
-                    //日志
-//                    "logger"              : "com.orhanobut:logger:${versions["loggerVersion"]}",
-
-                    //fastJson
-//                    "fastjson"            : "com.alibaba:fastjson:${versions["fastjsonVersion"]}.android",
-
-                    //沉浸式状态栏
-//                    "barlibrary"          : "com.gyf.barlibrary:barlibrary:${versions["barlibraryVersion"]}",
-
-                    //banner
-//                    "banner"              : "com.youth.banner:banner:${versions["bannerVersion"]}",
-
-                    //图片加载
-//                    "picasso"             : "com.squareup.picasso:picasso:${versions["picassoVersion"]}",
-
-                    //lombok
-//                    "lombokJavax"         : "javax.annotation:javax.annotation-api:${versions["javaxVersion"]}",
-//                    "lombok"              : "org.projectlombok:lombok:${versions["lombokVersion"]}",
-
-                    //数据库
-//                    "greenDao"            : "org.greenrobot:greendao:${versions["greendaoVersion"]}",
+            retrofit_adapter_rxjava2  : "com.squareup.retrofit2:adapter-rxjava2:$rootProject.rxjava_adapter",
+            retrofit_converter_gson   : "com.squareup.retrofit2:converter-gson:$rootProject.gson_converter",
+            retrofit_converter_scalars: "com.squareup.retrofit2:converter-scalars:$rootProject.scalars_converter",
+//            rxpermission              : "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxpermission@aar",
+            rxjava2                   : "io.reactivex.rxjava2:rxjava:$rootProject.rxjava",
+            rxjava2_android           : "io.reactivex.rxjava2:rxandroid:$rootProject.rxjava_android",
+//            rxlifecycle2              : "com.trello.rxlifecycle2:rxlifecycle:$rootProject.rxlifecycle",
+//            rxlifecycle2_components   : "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.rxlifecycle_components",
+//            dagger2_compiler          : "com.google.dagger:dagger-compiler:$rootProject.dagger_compiler",
+//            dagger2                   : "com.google.dagger:dagger:$rootProject.dagger",
+//            greenDao                  : "org.greenrobot:greendao:$rootProject.greenDao",
+//            transformations           : "jp.wasabeef:glide-transformations:$rootProject.transformations",
+            multidex                  : "com.android.support:multidex:$rootProject.multidex",
+//路由通讯
+//            arouter_api               : "com.alibaba:arouter-api:$rootProject.arouter_api",
+//            arouter_compiler          : "com.alibaba:arouter-compiler:$rootProject.arouter_compiler"
     ]
 
 }
