@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        if (rootProject.ext.isModuleLogin) {
+        if (rootProject.ext.isModuleMember) {
             applicationId "com.demo.sdk.module_member"
         }
         minSdkVersion rootProject.ext.android.minSdkVersion

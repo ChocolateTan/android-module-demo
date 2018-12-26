@@ -37,4 +37,7 @@ dependencies {
 
     api rootProject.ext.dependencies.appcompat_v7
     api rootProject.ext.dependencies.gson
+    api rootProject.ext.dependencies.lifecycle_extensions
+    api rootProject.ext.dependencies.lifecycle_viewmodel
+    api rootProject.ext.dependencies.lifecycle_livedata
 }
