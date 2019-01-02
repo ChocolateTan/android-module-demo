@@ -35,9 +35,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    api rootProject.ext.dependencies.recycleview
     api rootProject.ext.dependencies.appcompat_v7
     api rootProject.ext.dependencies.gson
     api rootProject.ext.dependencies.lifecycle_extensions
     api rootProject.ext.dependencies.lifecycle_viewmodel
     api rootProject.ext.dependencies.lifecycle_livedata
+    api rootProject.ext.dependencies.lifecycle_paging
+    api rootProject.ext.dependencies.okhttp3
+    api rootProject.ext.dependencies.retrofit
+    api rootProject.ext.dependencies.retrofit_adapter_rxjava2
+    api rootProject.ext.dependencies.retrofit_converter_gson
+    api rootProject.ext.dependencies.rxjava2
+    api rootProject.ext.dependencies.rxjava2_android
 }

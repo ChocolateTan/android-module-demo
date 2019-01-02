@@ -20,7 +20,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    if (!rootProject.ext.isModule) {
+    if (rootProject.ext.isModule) {
         api project(':module_login')
         api project(':module_member')
         api project(':module_sale')

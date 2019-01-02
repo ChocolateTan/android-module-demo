@@ -5,7 +5,7 @@ ext {
     //true 每个业务Module以lib的方式运行
     //false 每个业务Module可以作为app单独开发
     //修改之后需要Sync方可生效
-    isModule = true
+    isModule = false
 
     android = [
 
@@ -15,7 +15,7 @@ ext {
 
             compileSdkVersion: 28,
             buildToolsVersion: "28.0.3",
-            minSdkVersion    : 15,
+            minSdkVersion    : 17,
             targetSdkVersion : 28,
     ]
 
@@ -86,7 +86,7 @@ ext {
 //            dagger2                   : "com.google.dagger:dagger:$rootProject.dagger",
 //            greenDao                  : "org.greenrobot:greendao:$rootProject.greenDao",
 //            transformations           : "jp.wasabeef:glide-transformations:$rootProject.transformations",
-            multidex                  : "com.android.support:multidex:$rootProject.multidex",
+//            multidex                  : "com.android.support:multidex:$rootProject.multidex",
 //路由通讯
 //            arouter_api               : "com.alibaba:arouter-api:$rootProject.arouter_api",
 //            arouter_compiler          : "com.alibaba:arouter-compiler:$rootProject.arouter_compiler"
@@ -97,6 +97,9 @@ ext {
             lifecycle_viewmodel       : "android.arch.lifecycle:viewmodel:$rootProject.lifecycle_version",
             // alternatively - just LiveData
             lifecycle_livedata        : "android.arch.lifecycle:livedata:$rootProject.lifecycle_version",
+            //paging
+            lifecycle_paging        : "android.arch.paging:runtime:1.0.0",
+//            lifecycle_paging        : "android.arch.paging:runtime:$rootProject.lifecycle_version",
             // alternatively - Lifecycles only (no ViewModel or LiveData). Some UI
             //     AndroidX libraries use this lightweight import for Lifecycle
 //            lifecycle_runtime         : "androidx.lifecycle:lifecycle-runtime:$rootProject.lifecycle_version",

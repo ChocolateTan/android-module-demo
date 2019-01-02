@@ -1,48 +1,97 @@
 package com.demo.sdk.module_login;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link LoginFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class LoginFragment extends Fragment {
+import com.demo.sdk.common_base.mvvm.BaseFragment;
 
-  public LoginFragment() {
-    // Required empty public constructor
-  }
+public class LoginFragment extends BaseFragment<LoginViewModel> {
 
-  /**
-   * Use this factory method to create a new instance of
-   * this fragment using the provided parameters.
-   *
-   * @return A new instance of fragment LoginFragment.
-   */
-  // TODO: Rename and change types and number of parameters
-  public static LoginFragment newInstance() {
-    LoginFragment fragment = new LoginFragment();
-    return fragment;
-  }
+    public LoginFragment() {
+        // Required empty public constructor
+    }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-  }
+    public static LoginFragment newInstance() {
+        LoginFragment fragment = new LoginFragment();
+        return fragment;
+    }
 
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
-    TextView textView = new TextView(getActivity());
-    textView.setText(R.string.hello_blank_fragment);
-    return textView;
-  }
+    @Override
+    public LoginViewModel createViewModel() {
+        return ViewModelProviders.of(this).get(LoginViewModel.class);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        LinearLayout ly = new LinearLayout(getActivity());
+        ly.setOrientation(LinearLayout.VERTICAL);
+
+        TextView tv = new TextView(getActivity());
+        tv.setText("login:" + getActivity().getPackageName());
+        ly.addView(tv);
+
+        TextView tvType = new TextView(getActivity());
+        tvType.setText("普通用户");
+        ly.addView(tvType);
+
+        EditText edtAc = new EditText(getActivity());
+        ly.addView(edtAc);
+
+        EditText edtPws = new EditText(getActivity());
+        ly.addView(edtPws);
+
+        final CheckBox ckType = new CheckBox(getActivity());
+        ckType.setText("是否店主");
+        ly.addView(ckType);
+
+        Button btnLogin = new Button(getActivity());
+        btnLogin.setText("login");
+        ly.addView(btnLogin);
+
+        btnLogin.setOnClickListener(v -> {
+            Class clazz = null;
+            try {
+                if (getViewModel().getIsSale().getValue()) {
+                    clazz = Class.forName("com.demo.sdk.module_sale.MainActivity");
+                    getActivity().startActivity(new Intent(getActivity(), clazz));
+                } else {
+                    clazz = Class.forName("com.demo.sdk.module_member.MainActivity");
+                    getActivity().startActivity(new Intent(getActivity(), clazz));
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+
+        ckType.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            getViewModel().getIsSale().setValue(isChecked);
+        });
+
+        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+        getViewModel().getIsSale().observe(this, isSale -> {
+            if (isSale) {
+                tvType.setText("欢迎店主");
+            } else {
+                tvType.setText("欢迎普通用户");
+            }
+        });
+        return ly;
+    }
+
 }

@@ -1,4 +1,4 @@
-if (rootProject.ext.isModule) {
+if (!rootProject.ext.isModule) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        if (rootProject.ext.isModule) {
+        if (!rootProject.ext.isModule) {
             applicationId "com.demo.sdk.module_member"
         }
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -23,7 +23,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        if (!rootProject.ext.isModule) {
+        if (rootProject.ext.isModule) {
             javaCompileOptions {
                 annotationProcessorOptions {
                     arguments = [moduleName: project.getName()]
@@ -44,8 +44,8 @@ android {
                 manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-                java.srcDirs = ['src/main/java', 'src/main/module/java']
-                res.srcDirs = ['src/main/res', 'src/main/module/res']
+//                java.srcDirs = ['src/main/java', 'src/main/module/java']
+//                res.srcDirs = ['src/main/res', 'src/main/module/res']
             }
             jniLibs.srcDirs = ['libs']
 
