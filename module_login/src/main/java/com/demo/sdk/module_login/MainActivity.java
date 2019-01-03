@@ -13,21 +13,30 @@ import com.demo.sdk.common_base.mvvm.BaseActivity;
 public class MainActivity extends BaseActivity<MainViewModel> {
 
     @Override
-    public MainViewModel initViewModel() {
-        return ViewModelProviders.of(this).get(MainViewModel.class);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View initView() {
         FrameLayout fl = new FrameLayout(this);
         fl.setId(View.generateViewId());
 //        fl.setBackgroundColor(Color.BLUE);
 //        FrameLayout.LayoutParams ll = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //        fl.setLayoutParams(ll);
-        setContentView(fl);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(fl.getId(), LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
         transaction.commit();
+        return fl;
+    }
+
+    @Override
+    public MainViewModel initViewModel() {
+        return ViewModelProviders.of(this).get(MainViewModel.class);
+    }
+
+    @Override
+    public void dataObserver() {
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }

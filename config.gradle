@@ -5,7 +5,7 @@ ext {
     //true 每个业务Module以lib的方式运行
     //false 每个业务Module可以作为app单独开发
     //修改之后需要Sync方可生效
-    isModule = false
+    isModule = true
 
     android = [
 
@@ -51,6 +51,7 @@ ext {
             eventbus = "3.0.0",
             support_v4 = "25.4.0",
             okhttp3 = "3.3.1",
+            okhttp3_interceptor = "3.4.1",
             multidex = "1.0.1",
 
             lifecycle_version = "1.1.1"
@@ -72,6 +73,7 @@ ext {
 //            butterknife_compiler      : "com.jakewharton:butterknife-compiler:$rootProject.butterknife",
             retrofit                  : "com.squareup.retrofit2:retrofit:$rootProject.retrofit",
             okhttp3                   : "com.squareup.okhttp3:okhttp:$rootProject.okhttp3",
+            okhttp3_interceptor       : "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3_interceptor",
 
 
             retrofit_adapter_rxjava2  : "com.squareup.retrofit2:adapter-rxjava2:$rootProject.rxjava_adapter",
@@ -98,7 +100,7 @@ ext {
             // alternatively - just LiveData
             lifecycle_livedata        : "android.arch.lifecycle:livedata:$rootProject.lifecycle_version",
             //paging
-            lifecycle_paging        : "android.arch.paging:runtime:1.0.0",
+            lifecycle_paging          : "android.arch.paging:runtime:1.0.0",
 //            lifecycle_paging        : "android.arch.paging:runtime:$rootProject.lifecycle_version",
             // alternatively - Lifecycles only (no ViewModel or LiveData). Some UI
             //     AndroidX libraries use this lightweight import for Lifecycle

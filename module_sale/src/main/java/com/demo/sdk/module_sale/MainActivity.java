@@ -64,6 +64,10 @@ public class MainActivity extends BaseActivity<MainViewModel> {
 
             @Override
             public int getItemCount() {
+                if(null == provideViewModel().getJokeArticleList()
+                        || null == provideViewModel().getJokeArticleList().getValue()){
+                    return 0;
+                }
                 return provideViewModel().getJokeArticleList().getValue().size();
             }
         });

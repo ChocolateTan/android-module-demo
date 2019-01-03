@@ -43,6 +43,7 @@ dependencies {
     api rootProject.ext.dependencies.lifecycle_livedata
     api rootProject.ext.dependencies.lifecycle_paging
     api rootProject.ext.dependencies.okhttp3
+    api rootProject.ext.dependencies.okhttp3_interceptor
     api rootProject.ext.dependencies.retrofit
     api rootProject.ext.dependencies.retrofit_adapter_rxjava2
     api rootProject.ext.dependencies.retrofit_converter_gson

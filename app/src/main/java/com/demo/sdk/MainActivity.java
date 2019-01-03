@@ -22,15 +22,13 @@ public class MainActivity extends AppCompatActivity {
     btnLogin.setText("go to login");
     ly.addView(btnLogin);
 
-    btnLogin.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        Class clazz = null;
-        try {
-          clazz = Class.forName("com.demo.sdk.module_login.MainActivity");
-          MainActivity.this.startActivity(new Intent(MainActivity.this, clazz));
-        } catch (ClassNotFoundException e) {
-          e.printStackTrace();
-        }
+    btnLogin.setOnClickListener(v -> {
+      Class clazz = null;
+      try {
+        clazz = Class.forName("com.demo.sdk.module_login.MainActivity");
+        MainActivity.this.startActivity(new Intent(MainActivity.this, clazz));
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
       }
     });
 
