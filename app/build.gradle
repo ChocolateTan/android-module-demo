@@ -29,8 +29,6 @@ dependencies {
         api project(':module_member')
         api project(':module_sale')
 //        annotationProcessor rootProject.ext.dependencies.arouter_compiler
-    }else{
-        // add custom modules to develop
     }
 
 //    implementation 'com.android.support:appcompat-v7:27.1.1'

@@ -17,7 +17,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -26,6 +30,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.example.data_repository.greendao'
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -35,21 +51,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api rootProject.ext.dependencies.recycleview
-    api rootProject.ext.dependencies.appcompat_v7
-    api rootProject.ext.dependencies.gson
-    api rootProject.ext.dependencies.lifecycle_extensions
-    api rootProject.ext.dependencies.lifecycle_viewmodel
-    api rootProject.ext.dependencies.lifecycle_livedata
-    api rootProject.ext.dependencies.lifecycle_paging
-    api rootProject.ext.dependencies.okhttp3
-    api rootProject.ext.dependencies.okhttp3_interceptor
-    api rootProject.ext.dependencies.retrofit
-    api rootProject.ext.dependencies.retrofit_adapter_rxjava2
-    api rootProject.ext.dependencies.retrofit_converter_gson
-    api rootProject.ext.dependencies.rxjava2
-    api rootProject.ext.dependencies.rxjava2_android
-    api rootProject.ext.dependencies.greenDao
-    api rootProject.ext.dependencies.greenDao_generator
-    api rootProject.ext.dependencies.greenDao_SQLcipher
+    implementation project(':common-base')
 }

@@ -1,6 +1,10 @@
-package com.demo.sdk.module_sale;
+package com.example.data_repository.entities;
 
-public class ArticleBean {
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+
+@Entity
+public class ArticleEntity {
     /**
      * _id : {"$oid":"5c0347ee57a28ba3d5b55181"}
      * guid : https://www.oschina.net/news/102310/announcing-document-layer
@@ -17,7 +21,7 @@ public class ArticleBean {
      * title : FoundationDB 开源文档数据库模型 Document Layer​​​​​​​
      */
 
-    private IdBean _id;
+//    private IdBean _id;
     private String guid;
     private String category;
     private String create_date;
@@ -30,14 +34,33 @@ public class ArticleBean {
     private String rss_published;
     private String rss_title;
     private String title;
-
-    public IdBean get_id() {
-        return _id;
+    
+    public ArticleEntity() {
     }
 
-    public void set_id(IdBean _id) {
-        this._id = _id;
+    @Generated(hash = 2104321691)
+    public ArticleEntity(String guid, String category, String create_date, String description, String link, String modify_date, String pubDate, String published, String rss_link, String rss_published, String rss_title, String title) {
+        this.guid = guid;
+        this.category = category;
+        this.create_date = create_date;
+        this.description = description;
+        this.link = link;
+        this.modify_date = modify_date;
+        this.pubDate = pubDate;
+        this.published = published;
+        this.rss_link = rss_link;
+        this.rss_published = rss_published;
+        this.rss_title = rss_title;
+        this.title = title;
     }
+
+//    public IdBean get_id() {
+//        return _id;
+//    }
+//
+//    public void set_id(IdBean _id) {
+//        this._id = _id;
+//    }
 
     public String getGuid() {
         return guid;
@@ -135,19 +158,19 @@ public class ArticleBean {
         this.title = title;
     }
 
-    public static class IdBean {
-        /**
-         * $oid : 5c0347ee57a28ba3d5b55181
-         */
-
-        private String $oid;
-
-        public String get$oid() {
-            return $oid;
-        }
-
-        public void set$oid(String $oid) {
-            this.$oid = $oid;
-        }
-    }
+//    public static class IdBean {
+//        /**
+//         * $oid : 5c0347ee57a28ba3d5b55181
+//         */
+//
+//        private String $oid;
+//
+//        public String get$oid() {
+//            return $oid;
+//        }
+//
+//        public void set$oid(String $oid) {
+//            this.$oid = $oid;
+//        }
+//    }
 }

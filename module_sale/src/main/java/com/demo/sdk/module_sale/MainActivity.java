@@ -1,28 +1,25 @@
 package com.demo.sdk.module_sale;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.demo.sdk.common_base.mvvm.BaseActivity;
 import com.demo.sdk.common_base.utils.LogUtil;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.data_repository.entities.ArticleEntity;
 
 public class MainActivity extends BaseActivity<MainViewModel> {
     RecyclerView rv;
+    Button btnLoadRemote;
+    Button btnLoadLocal;
     TextView tv;
 //    MainAdapter adapter ;
 
@@ -31,6 +28,14 @@ public class MainActivity extends BaseActivity<MainViewModel> {
         LinearLayout ly = new LinearLayout(this);
         ly.setOrientation(LinearLayout.VERTICAL);
         ly.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+        btnLoadRemote= new Button(this);
+        btnLoadRemote.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btnLoadRemote.setText("remote");
+
+        btnLoadLocal= new Button(this);
+        btnLoadLocal.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btnLoadLocal.setText("local");
 
         tv = new TextView(this);
         tv.setText("start");
@@ -57,7 +62,7 @@ public class MainActivity extends BaseActivity<MainViewModel> {
             @Override
             public void onBindViewHolder(@NonNull MVH mvh, int i) {
 
-                ArticleBean article = provideViewModel().getJokeArticleList().getValue().get(i);
+                ArticleEntity article = provideViewModel().getJokeArticleList().getValue().get(i);
                 mvh.tv.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 mvh.tv.setText(article.getTitle());
             }
@@ -73,8 +78,16 @@ public class MainActivity extends BaseActivity<MainViewModel> {
         });
         rv.setBackgroundColor(Color.GREEN);
         ly.addView(tv);
+        ly.addView(btnLoadRemote);
+        ly.addView(btnLoadLocal);
         ly.addView(rv);
 
+        btnLoadRemote.setOnClickListener(view->{
+            provideViewModel().onClickRemote();
+        });
+        btnLoadLocal.setOnClickListener(view->{
+            provideViewModel().onClickLocal();
+        });
 //        adapter.setPosts(list);
 //        adapter.notifyDataSetChanged();
         return ly;

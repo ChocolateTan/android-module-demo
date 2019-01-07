@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.demo.sdk.common_base.mvvm.BaseFragment;
+import com.demo.sdk.common_base.utils.ToastUtils;
 
 public class LoginFragment extends BaseFragment<LoginViewModel> {
 
@@ -66,21 +67,28 @@ public class LoginFragment extends BaseFragment<LoginViewModel> {
 
         btnLogin.setOnClickListener(v -> {
             Class clazz = null;
+            String className = null;
             try {
                 if (getViewModel().getIsSale().getValue()) {
-                    clazz = Class.forName("com.demo.sdk.module_sale.MainActivity");
-                    getActivity().startActivity(new Intent(getActivity(), clazz));
+                    className = "com.demo.sdk.module_sale.MainActivity";
                 } else {
-                    clazz = Class.forName("com.demo.sdk.module_member.MainActivity");
-                    getActivity().startActivity(new Intent(getActivity(), clazz));
+                    className = "com.demo.sdk.module_member.MainActivity";
                 }
+                clazz = Class.forName(className);
+                getActivity().startActivity(new Intent(getActivity(), clazz));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
+                Toast.makeText(getActivity(),"can not find class " + className, Toast.LENGTH_LONG).show();
             }
         });
 
         ckType.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            getViewModel().getIsSale().setValue(isChecked);
+//            getViewModel().getIsSale().setValue(isChecked);
+            if (isChecked) {
+                tvType.setText("欢迎店主");
+            } else {
+                tvType.setText("欢迎普通用户");
+            }
         });
 
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.

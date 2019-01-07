@@ -27,7 +27,7 @@ public class LoginViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> getIsSale() {
       if (isSale == null) {
         isSale = new MutableLiveData<>();
-//        isSale.setValue(false);
+        isSale.setValue(false);
       }
       return isSale;
     }

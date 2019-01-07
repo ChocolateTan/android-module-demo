@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.data_repository.entities.ArticleEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.VH> {
-    List<ArticleBean> list = new ArrayList<>();
+    List<ArticleEntity> list = new ArrayList<>();
 
 //    MainAdapter(List<ArticleBean> list) {
 //        this.list = list;
@@ -34,7 +36,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH vh, int i) {
-        ArticleBean article = list.get(i);
+        ArticleEntity article = list.get(i);
         vh.tv.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         vh.tv.setText(article.getTitle());
 //        vh.tv.setTextColor(Color.RED);
@@ -49,7 +51,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.VH> {
         return list.size();
     }
 
-    void setPosts(List<ArticleBean> postList) {
+    void setPosts(List<ArticleEntity> postList) {
 //        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
 //            @Override
 //            public int getOldListSize() {
